@@ -1,0 +1,14 @@
+# VERSION
+VERSION = "0.0.1"
+
+# APP NAME
+APP_NAME = "Journey Lingua Backend"
+
+# API VERSION V1
+API_V1 = "v1"
+
+# API PREFIX
+API_PREFIX = "/api/v1"
+
+# API ROOT
+ROOT_PATH = ""

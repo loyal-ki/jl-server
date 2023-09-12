@@ -1,0 +1,6 @@
+.mypy_cache
+.docker
+.git
+.github
+.pytest_cache
+.vscode

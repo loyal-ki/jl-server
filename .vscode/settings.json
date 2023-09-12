@@ -1,0 +1,14 @@
+{
+  "python.testing.pytestArgs": [
+    "tests"
+  ],
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestEnabled": true,
+  "docify.commentService.programmingLanguage": "python",
+  "docify.translateService.programmingLanguage": "python",
+  "docify.translateService.docstringFormat": "Doxygen",
+  "docify.commentService.docstringFormat": "Doxygen",
+  "docify.commentService.inlineComments": true,
+  "docify.commentService.moreExpressiveComments": true,
+  "docify.commentService.sidePanelReviewMode": false
+}

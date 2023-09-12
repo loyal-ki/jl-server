@@ -1,0 +1,14 @@
+{
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": true,
+  "python.formatting.provider": "black",
+  "python.linting.mypyEnabled": true,
+  "terminal.integrated.profiles.linux": {
+  "bash": {
+      "path": "/bin/bash"
+    }
+  },
+  "python.formatting.blackPath": "/usr/local/bin/black",
+  "python.linting.flake8Path": "/usr/local/bin/flake8",
+  "python.linting.mypyPath": "/usr/local/bin/mypy",
+}

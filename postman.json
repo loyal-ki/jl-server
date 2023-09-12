@@ -1,0 +1,757 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "Journey Lingua",
+        "version": "0.0.1"
+    },
+    "paths": {
+        "/auth/login": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Login",
+                "operationId": "login_auth_login_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserLogin"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/email": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "User registration with phone mail",
+                "operationId": "register_by_email_auth_email_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserEmailCreate"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/phone": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "User registration with phone number",
+                "operationId": "register_by_phone_auth_phone_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserPhoneCreate"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/logout": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Logout",
+                "operationId": "signout_auth_logout_post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    },
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/auth/forgot-password/email": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Sending Email for Password Reset",
+                "operationId": "forgot_password_by_email_auth_forgot_password_email_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ForgotPasswordEmail"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/forgot-password/phone": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Sending SMS for Password Reset",
+                "operationId": "forgot_password_by_phone_auth_forgot_password_phone_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ForgotPasswordPhone"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/reset-password": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Reset-password",
+                "operationId": "reset_password_auth_reset_password_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ResetPassword"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/verify/email": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Verify Email",
+                "operationId": "verify_email_auth_verify_email_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/VerifyEmail"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/verify/email/refresh": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Refresh email verify token",
+                "operationId": "refresh_email_verify_token_auth_verify_email_refresh_post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/auth/verify/phone": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "User Registration with Phone Number or Authentication After Phone Number Update",
+                "operationId": "verify_phone_auth_verify_phone_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/VerifyPhone"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BearerResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/verify/phone/refresh": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Refresh phone verify token",
+                "operationId": "refresh_phone_verify_token_auth_verify_phone_refresh_post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "OAuth2PasswordBearer": []
+                    }
+                ]
+            }
+        },
+        "/testing/videoId": {
+            "get": {
+                "summary": "Get Video Id",
+                "operationId": "get_video_id_testing_videoId_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/": {
+            "get": {
+                "tags": [
+                    "root"
+                ],
+                "summary": "Root",
+                "operationId": "root__get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "BearerResponse": {
+                "title": "BearerResponse",
+                "required": [
+                    "access_token",
+                    "token_type",
+                    "is_user_verified"
+                ],
+                "type": "object",
+                "properties": {
+                    "access_token": {
+                        "title": "Access Token",
+                        "type": "string"
+                    },
+                    "token_type": {
+                        "title": "Token Type",
+                        "type": "string"
+                    },
+                    "is_user_verified": {
+                        "title": "Is User Verified",
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ForgotPasswordEmail": {
+                "title": "ForgotPasswordEmail",
+                "required": [
+                    "email"
+                ],
+                "type": "object",
+                "properties": {
+                    "client_id": {
+                        "title": "Client Id",
+                        "type": "string"
+                    },
+                    "client_secret": {
+                        "title": "Client Secret",
+                        "type": "string"
+                    },
+                    "email": {
+                        "title": "Email",
+                        "type": "string",
+                        "format": "email"
+                    }
+                },
+                "description": "Reset password by email",
+                "example": {
+                    "email": "user@example.com",
+                    "client_id": "client_id",
+                    "client_secret": "client_secret"
+                }
+            },
+            "ForgotPasswordPhone": {
+                "title": "ForgotPasswordPhone",
+                "required": [
+                    "phone"
+                ],
+                "type": "object",
+                "properties": {
+                    "client_id": {
+                        "title": "Client Id",
+                        "type": "string"
+                    },
+                    "client_secret": {
+                        "title": "Client Secret",
+                        "type": "string"
+                    },
+                    "phone": {
+                        "title": "Phone",
+                        "pattern": "^(03|05|07|08|09)\\d{8}$",
+                        "example": [
+                            "0969090658"
+                        ]
+                    }
+                },
+                "description": "Reset password by phone",
+                "example": {
+                    "phone": "0969090658",
+                    "client_id": "client_id",
+                    "client_secret": "client_secret"
+                }
+            },
+            "HTTPValidationError": {
+                "title": "HTTPValidationError",
+                "type": "object",
+                "properties": {
+                    "detail": {
+                        "title": "Detail",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ValidationError"
+                        }
+                    }
+                }
+            },
+            "ResetPassword": {
+                "title": "ResetPassword",
+                "required": [
+                    "token",
+                    "password"
+                ],
+                "type": "object",
+                "properties": {
+                    "token": {
+                        "title": "Token",
+                        "type": "string",
+                        "description": "token",
+                        "example": "token"
+                    },
+                    "password": {
+                        "title": "Password",
+                        "type": "string",
+                        "description": "password",
+                        "format": "password",
+                        "writeOnly": true,
+                        "example": "password"
+                    }
+                }
+            },
+            "UserEmailCreate": {
+                "title": "UserEmailCreate",
+                "required": [
+                    "email",
+                    "password"
+                ],
+                "type": "object",
+                "properties": {
+                    "client_id": {
+                        "title": "Client Id",
+                        "type": "string"
+                    },
+                    "client_secret": {
+                        "title": "Client Secret",
+                        "type": "string"
+                    },
+                    "email": {
+                        "title": "Email",
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "password": {
+                        "title": "Password",
+                        "pattern": "^[A-Za-z0-9]{8,20}$",
+                        "example": [
+                            "a3qf83lSOk"
+                        ]
+                    }
+                },
+                "description": "Sign in using email address",
+                "example": {
+                    "email": "user@example.com",
+                    "password": "password",
+                    "client_id": "client_id",
+                    "client_secret": "client_secret"
+                }
+            },
+            "UserLogin": {
+                "title": "UserLogin",
+                "required": [
+                    "password"
+                ],
+                "type": "object",
+                "properties": {
+                    "client_id": {
+                        "title": "Client Id",
+                        "type": "string"
+                    },
+                    "client_secret": {
+                        "title": "Client Secret",
+                        "type": "string"
+                    },
+                    "email": {
+                        "title": "Email",
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "phone": {
+                        "title": "Phone",
+                        "pattern": "^(03|05|07|08|09)\\d{8}$",
+                        "example": [
+                            "0969090658"
+                        ]
+                    },
+                    "password": {
+                        "title": "Password",
+                        "pattern": "^[A-Za-z0-9]{8,20}$",
+                        "example": [
+                            "a3qf83lSOk"
+                        ]
+                    }
+                },
+                "description": "Reset password by email",
+                "example": {
+                    "email": "user@example.com",
+                    "phone": "0969090658",
+                    "password": "password",
+                    "client_id": "client_id",
+                    "client_secret": "client_secret"
+                }
+            },
+            "UserPhoneCreate": {
+                "title": "UserPhoneCreate",
+                "required": [
+                    "phone",
+                    "password"
+                ],
+                "type": "object",
+                "properties": {
+                    "client_id": {
+                        "title": "Client Id",
+                        "type": "string"
+                    },
+                    "client_secret": {
+                        "title": "Client Secret",
+                        "type": "string"
+                    },
+                    "phone": {
+                        "title": "Phone",
+                        "pattern": "^(03|05|07|08|09)\\d{8}$",
+                        "example": [
+                            "0969090658"
+                        ]
+                    },
+                    "password": {
+                        "title": "Password",
+                        "pattern": "^[A-Za-z0-9]{8,20}$",
+                        "example": [
+                            "a3qf83lSOk"
+                        ]
+                    }
+                },
+                "description": "Sign in using phone number",
+                "example": {
+                    "phone": "0969090658",
+                    "password": "password",
+                    "client_id": "client_id",
+                    "client_secret": "client_secret"
+                }
+            },
+            "ValidationError": {
+                "title": "ValidationError",
+                "required": [
+                    "loc",
+                    "msg",
+                    "type"
+                ],
+                "type": "object",
+                "properties": {
+                    "loc": {
+                        "title": "Location",
+                        "type": "array",
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "integer"
+                                }
+                            ]
+                        }
+                    },
+                    "msg": {
+                        "title": "Message",
+                        "type": "string"
+                    },
+                    "type": {
+                        "title": "Error Type",
+                        "type": "string"
+                    }
+                }
+            },
+            "VerifyEmail": {
+                "title": "VerifyEmail",
+                "required": [
+                    "token"
+                ],
+                "type": "object",
+                "properties": {
+                    "token": {
+                        "title": "Token",
+                        "type": "string",
+                        "description": "token",
+                        "example": "token"
+                    }
+                },
+                "description": "Email address verification",
+                "example": {
+                    "token": "token"
+                }
+            },
+            "VerifyPhone": {
+                "title": "VerifyPhone",
+                "required": [
+                    "pin"
+                ],
+                "type": "object",
+                "properties": {
+                    "pin": {
+                        "title": "Pin",
+                        "type": "string",
+                        "description": "PIN",
+                        "example": "token"
+                    }
+                },
+                "description": "Phone number verification",
+                "example": {
+                    "pin": "123456"
+                }
+            }
+        },
+        "securitySchemes": {
+            "OAuth2PasswordBearer": {
+                "type": "oauth2",
+                "flows": {
+                    "password": {
+                        "scopes": {},
+                        "tokenUrl": "/auth/login"
+                    }
+                }
+            }
+        }
+    }
+}

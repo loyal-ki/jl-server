@@ -1,0 +1,78 @@
+services:
+  journey-lingua-runner:
+    image: journey-lingua-api:base
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: base
+    env_file:
+      - ./conf/dev.env
+    tty: true
+    working_dir: /app
+    stdin_open: true
+    container_name: journey-lingua-runner
+    depends_on: 
+      - mysql
+      - redis
+    volumes:
+      - .:/app:cached
+      - poetry:/app/.docker/poetry
+      - site-packages:/usr/local/lib/python3.10/site-packages
+      - bin:/usr/local/bin
+
+  journey-lingua-api:
+    image: journey-lingua-api:develop
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    env_file:
+      - ./conf/dev.env
+    tty: true
+    working_dir: /app
+    stdin_open: true
+    container_name: journey-lingua-api
+    restart: unless-stopped
+    ports:
+      - 8082:80
+      - 5678:5678
+    depends_on: 
+      - mysql
+      - redis
+    volumes:
+      - .:/app:cached
+
+  mysql:
+    image: mysql:8.0.23
+    platform: linux/amd64
+    container_name: journey-lingua-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: journey-lingua
+      MYSQL_USER: local
+      MYSQL_PASSWORD: local
+      TZ: 'Asia/Ho_Chi_Minh'
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./.docker/db/data:/var/lib/mysql
+      - ./.docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./.docker/db/sql:/docker-entrypoint-initdb.d
+    ports:
+      - 3306:3306
+
+
+  redis:
+    image: redis:7.0.6-alpine
+    container_name: journey-lingua-redis
+    restart: unless-stopped
+    ports:
+      - 6380:6379
+
+volumes:
+  poetry:
+  site-packages:
+  bin:
+
+networks:
+  default:
+    name: journey_lingua_backend_default

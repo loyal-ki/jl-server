@@ -1,0 +1,15 @@
+pre-commit:
+  parallel: true
+  commands:
+    black:
+      glob: "*.py"
+      run: docker compose exec -T journey-lingua-runner black {staged_files} --check
+    flake8:
+      glob: "*.py"
+      run: docker compose exec -T journey-lingua-runner flake8 {staged_files}
+    mypy:
+      glob: "*.py"
+      run: docker compose exec -T journey-lingua-runner mypy {staged_files}
+    isort:
+      glob: "*.py"
+      run: docker compose exec -T journey-lingua-runner isort {staged_files}
